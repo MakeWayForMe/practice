@@ -47,6 +47,6 @@ const todos = createSlice({
 
 const store = configureStore({reducer: todos.reducer});
 
-export const { addToDo, deleteToDo} = todos.actions;
+export const { addToDo, deleteToDo } = todos.actions;
 
 export default store;
