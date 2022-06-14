@@ -12,7 +12,7 @@ button.create {
     display: flex;
     width: 200px;
     height: 100px;
-    margin: 100px auto;
+    margin: 20px auto;
     border: none;
     background: cornflowerblue;
     font-family: 'Jua', sans-serif;
@@ -23,6 +23,8 @@ button.create {
     cursor: pointer;
 }
 
+button.create:first-child{margin-top: 100px;}
+
 button.create:hover {
     box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
@@ -30,7 +32,7 @@ button.create:hover {
 .result {
     display: flex;
     width: 1000px;
-    margin: 0 auto;
+    margin: 50px auto;
     font-size: 50px;
     text-align: center;
     justify-content: space-between;
