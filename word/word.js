@@ -6,8 +6,8 @@ const form = document.querySelector('#form');
 const formBtn = document.querySelector('#form button');
 
 
-const sentence = ['apple'];
-// const sentence = ['apple','activity','government','computer','method','award','understanding'];
+// const sentence = ['apple'];
+const sentence = ['apple','activity','government','computer','method','award','stand'];
 let state = true;
 let xth ="";
 const quiz = () => {
