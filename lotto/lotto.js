@@ -22,12 +22,10 @@ function 로또생성기() {
     var lotto = [];
 
     for(var i=0; i<6; i++) {
-        var num = Math.floor(Math.random() * 45) + 1;
+        var num = Math.floor(Math.random()*45) + 1;
 
-        for(var j in lotto) {
-            while(num == lotto[j] || num > 45) {
-                num = Math.floor(Math.random() * 45) + 1;
-            }
+        while(lotto.includes(num) || num > 45) {
+            num = Math.floor(Math.random()*45 + 1);
         }
         lotto.push(num);
     }
