@@ -1,10 +1,10 @@
-const 몇번나왔냐 = document.querySelector('.about');
+const whatTime = document.querySelector('.about');
 function about() {
     var num = '';
     for(var i=1; i<=45; i++) {
-        num += `<p>${i}번 = <span>0</span> 회</p>`
+        num += `<p class="search">${i}번 = <span>0</span> 회</p>`
     }
-    몇번나왔냐.innerHTML = num;
+    whatTime.innerHTML = num;
 }
 about();
 
@@ -47,20 +47,28 @@ function 로또생성기() {
     n++;
 }
 
-var btn = document.querySelector('.create');
+var btn = document.querySelector('#create');
+var btn2 = document.querySelector('#create10');
 btn.addEventListener('click', 로또생성기);
+btn2.addEventListener('click', () => {
+    for(i=1;i<=10;i++) {
+        로또생성기()
+    }
+});
 
 const 버튼 = document.querySelector('.nankai');
 
 let 온오프 = false;
 function 열고닫고() {
     if(온오프 == false) {
-        몇번나왔냐.classList.add('on');
+        whatTime.classList.add('on');
         온오프 = true;
     } else {
-        몇번나왔냐.classList.remove('on');
+        whatTime.classList.remove('on');
         온오프 = false;
     }
 }
 
-버튼.addEventListener('click',열고닫고)
+버튼.addEventListener('click',열고닫고);
+
+

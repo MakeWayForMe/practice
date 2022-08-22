@@ -35,7 +35,17 @@ const 추첨 = () => {
 
     var atari = '';
     for(var k in 결과) {
-        atari += `<span>${결과[k]}</span>`;
+        if(결과[k] < 10) {
+            atari += `<span class="a">${결과[k]}</span>`;
+        } else if(결과[k] >= 10 && 결과[k] < 20){
+            atari += `<span class="b">${결과[k]}</span>`;
+        } else if(결과[k] >= 20 && 결과[k] < 30){
+            atari += `<span class="c">${결과[k]}</span>`;
+        } else if(결과[k] >= 30 && 결과[k] < 40){
+            atari += `<span class="d">${결과[k]}</span>`;
+        } else if(결과[k] >= 40){
+            atari += `<span class="e">${결과[k]}</span>`;
+        }
         var 횟수 = Number(횟수리스트[결과[k] - 1].textContent);
         횟수리스트[결과[k] - 1].innerHTML = 횟수 + 1;
     }

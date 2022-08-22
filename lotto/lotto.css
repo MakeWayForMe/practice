@@ -54,10 +54,14 @@ button.create:hover {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: cornflowerblue;
+    background-color: rgb(221, 233, 49);
     transform: translate(-50%, -48%);
     content: '';
 }
+.result span.b:before{background-color: #2037b8;}
+.result span.c:before{background-color: #b41515;}
+.result span.d:before{background-color: #616161;}
+.result span.e:before{background-color: #3bdd2c;}
 
 .history {
     width: 500px;
