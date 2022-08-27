@@ -41,7 +41,7 @@ function 로또생성기() {
     }
     추첨결과.innerHTML = atari;
 
-    $('.history').append(`<tr><th>${n} 회차</th><td>${lotto}</td>`);
+    $('.history').append(`<tr><th>${n} 회차</th><td><span>${lotto[0]}</span><span>${lotto[1]}</span><span>${lotto[2]}</span><span>${lotto[3]}</span><span>${lotto[4]}</span><span>${lotto[5]}</span></td>`);
     n++;
 }
 

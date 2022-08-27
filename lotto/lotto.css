@@ -77,7 +77,15 @@ button.create:hover {
 .history td{
     width: 70%;
 }
-
+.history td span{
+    display: inline-block;
+    width: 40px;
+    line-height: 40px;
+    background-color: rgba(100, 149, 237, 0.2);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.history td span:last-child{margin-right: 0;}
 .nankai {
     position: fixed;
     top: 10px;
@@ -153,6 +161,13 @@ button.create:hover {
         font-size: 5vw;
     }
 
+    .history th, .history td{
+        font-size: 20px;
+    }
+    .history td span {
+        width: 30px;
+        line-height: 30px;
+    }
     .about {
         height: 60vh;
         overflow-y: auto;
