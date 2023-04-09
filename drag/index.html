@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./drag.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+        뭐<br />
+
+    </div>
+    <div class="btn_wrap">
+        <button type="button">구매하기</button>
+    </div>
+    <div class="gumae_wrap">
+        <div class="curtain"></div>
+        <div class="layor_root">
+            <div class="layor"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        let isPress = false,
+            prevPosY = 0,
+            newPosY = 0;
+
+        $(function() {
+            let $target = document.querySelector('.layor'),
+                originPos = $('.layor').offset().top;
+
+            $('.gumae_wrap').on('touchstart', function(e) {
+                $('body').addClass('lock no-tran');
+            }).on('touchend', function(e) {
+                $('body').removeClass('no-tran');
+                setTimeout(function() {
+                    $('body').removeClass('lock');
+                },100);
+            });
+
+            $('.layor_root').on('touchstart', function(e) {
+                prevPosY = e.originalEvent.touches[0].clientY;
+
+                isPress = true;
+            }).on('touchmove', function(e) {
+                if (!isPress) return;
+
+                const posY = prevPosY - e.originalEvent.touches[0].clientY;
+                prevPosY = e.originalEvent.touches[0].clientY;
+                newPosY = $target.offsetTop - posY
+
+                if(newPosY > 0) {
+                    $target.style.top = newPosY + 'px';
+                    $('.curtain').css('opacity', 1 - (newPosY / $('.layor').height()));
+                }
+
+            }).on('touchend', function(e) {
+                isPress = false;
+
+                if(newPosY < $('.layor').height() / 3) {
+                    $target.style.top = 0;
+                    $('.curtain').css('opacity', '1');
+                } else {
+                    $target.style.top = 100 + '%';
+                    $('.curtain').css('opacity', '0');
+                    $('.gumae_wrap').removeClass('active');
+                }
+            });
+
+            $('.btn_wrap button').on('click',function() {
+                $target.style.top = 0;
+                $('.curtain').css('opacity', '1');
+                $('.gumae_wrap').addClass('active');
+            });
+
+            $('.curtain').on('click',function() {
+                $target.style.top = 100 + '%';
+                $('.curtain').css('opacity', '0');
+                $('.gumae_wrap').removeClass('active');
+            });
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+*{margin: 0;padding: 0;box-sizing: border-box;}
+
+body{background-color: #f7f5f1;height: 8000px;}
+.gumae_wrap{position: fixed;top: 0;left: calc(50% - 210px);width: 420px;height: 100%;z-index:3;visibility: hidden;}
+.curtain{background-color: rgba(0, 0, 0, 0.2);height: 100%;opacity:0;transition: 300ms ease-in-out;}
+.layor_root{position: absolute;bottom: -100%;left: 0;width: 100%;height: 400px;transition: 300ms ease-in-out;}
+.layor{position:absolute;left: 0;width: 100%;height: 100%;background-color: white;border-radius: 20px 20px 0 0;top: 0;transition: 300ms;}
+.lock{overflow: hidden;}
+body.no-tran .layor{transition: none;}
+body.no-tran .curtain{transition: none;}
+.gumae_wrap.active{visibility: visible;}
+.gumae_wrap.active .layor_root{bottom: 0;}
+
+
+.btn_wrap{position: fixed;bottom: 0;left: 0;width: 100%;padding: 20px;background-color: white;}
+.btn_wrap button{width: 100%;height: 80px;background-color: #262626;font-weight: 600;text-align: center;border: none;font-size: 26px;color: white;border-radius: 10px;}
