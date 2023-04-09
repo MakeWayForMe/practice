@@ -191,7 +191,8 @@
                 $('.gumae_wrap').addClass('active');
             });
 
-            $('.curtain').on('click',function() {
+            $('.curtain').on('click',function(e) {
+                e.stopPropagation();
                 $target.style.top = 100 + '%';
                 $('.curtain').css('opacity', '0');
                 $('.gumae_wrap').removeClass('active');
