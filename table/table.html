@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <select name="" id="">
+                        <option value="전체">전체</option>
+                        <option value="동물">동물</option>
+                        <option value="식물">식물</option>
+                    </select>
+                </th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        let 데이터 = [],
+            전체데이터 = [];
+
+        $(function() {
+            $.ajax({
+                type: 'GET',
+                url: './yam.json',
+                dataType: 'json',
+                success: function(data) {
+                    데이터 = [...data.동물, ...data.식물];
+                    전체데이터 = 데이터;
+
+                    var result = 데이터.sort(function (a, b) {
+                        return b.번호 - a.번호;
+                    });
+                    var sex;
+
+                    for(var i=0;i<result.length;i++) {
+                        sex += `<tr><td>${result[i].번호}</td><td>${result[i].이름}</td><td>${result[i].나이}</td></tr>`
+                    }
+                    $('table tbody').html(sex);
+                }
+            });
+
+            $('select').on('change',function() {
+                $('table tbody').html('');
+                var yam = $(this).val();
+                데이터 = [];
+                var sex = '';
+
+                if(yam === '전체') {
+                    for(var i=0;i<전체데이터.length;i++) {
+                        sex += `<tr><td>${전체데이터[i].번호}</td><td>${전체데이터[i].이름}</td><td>${전체데이터[i].나이}</td></tr>`
+                    }
+                    $('table tbody').html(sex);
+                } else {
+                    $.ajax({
+                        type: 'GET',
+                        url: './yam.json',
+                        dataType: 'json',
+                        success: function(data) {
+                            데이터 = [...data[yam]];
+                            var result = 데이터.sort(function (a, b) {
+                                return b.번호 - a.번호;
+                            });
+
+                            for(var i=0;i<result.length;i++) {
+                                sex += `<tr><td>${result[i].번호}</td><td>${result[i].이름}</td><td>${result[i].나이}</td></tr>`
+                            }
+
+                            $('table tbody').html(sex);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
